@@ -1,0 +1,181 @@
+﻿entidad,familia,plazas_vigentes,analizado,tipo_fuente,dominio_oficial,url_convocatorias_oficial,url_bases_ejemplo,formato_bases,postulacion,notas,url_ficha_sitio
+PODER JUDICIAL,Organismo autónomo,281,sí,Portal propio de postulación,aplicativo.pj.gob.pe,https://aplicativo.pj.gob.pe/psep/wfrmConvocatoriasV.aspx?TCon=C,https://aplicativo.pj.gob.pe/repositoriopsep/15606_BasesConcurso.pdf,"PDF directo, URL predecible {id}_BasesConcurso.pdf",Virtual (PSEP),ASP.NET; también {id}_AnuncioConvocatoria.pdf,https://www.convocatoriasdetrabajo.com/organizacion-PODER-JUDICIAL-48.html
+UGEL-3,Educación - UGEL,247,sí,Portal propio de postulación,sistemas06.ugel03.gob.pe,http://sistemas06.ugel03.gob.pe/sigepo/vigente_cas,http://sistemas06.ugel03.gob.pe/sigepo/assets/2026/CAS/124-2026.pdf,"PDF directo, URL predecible assets/{año}/CAS/{n}-{año}.pdf",Virtual (SIGEPO),"Sitio en http, sin TLS",https://www.convocatoriasdetrabajo.com/organizacion-UGEL-3-163.html
+UGEL 2 - SAN MARTÍN DE PORRES,Educación - UGEL,205,sí,Web propia con PDF,ugel02.gob.pe,https://www.ugel02.gob.pe/convocatorias,https://www.ugel02.gob.pe/sites/default/files/CAS/tdr_cas_ndeg_76-2026_tecnico_en_escalafon_compressed_1.pdf,PDF directo (Drupal),Virtual (enlinea.minedu.gob.pe),Anexos en .xls/.doc,https://www.convocatoriasdetrabajo.com/organizacion-UGEL2-SAN-MARTIN-DE-PORRES-155.html
+UGEL-1,Educación - UGEL,202,sí,gob.pe,gob.pe/institucion/ugelsanjuandemiraflores,https://www.gob.pe/institucion/ugelsanjuandemiraflores/colecciones/89543-contratacion-cas-2026,https://www.gob.pe/institucion/ugelsanjuandemiraflores/informes-publicaciones/8754836-cas-n-093-2026-ugel01-convocatoria-para-la-contratacion-administrativa-de-servicios-de-un-01-psicologo-a-plazo-determinado-vigente,Página gob.pe con adjuntos en cdn.www.gob.pe,Virtual (enlinea.minedu.gob.pe),,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-1-166.html
+UGEL-5,Educación - UGEL,177,sí,gob.pe,gob.pe/institucion/ugel05,https://www.gob.pe/institucion/ugel05/colecciones/50610-convocatorias-de-trabajo-ugel05,https://www.gob.pe/institucion/ugel05/informes-publicaciones/8790891-convocatoria-cas-n-107-2026,Página gob.pe con adjuntos en cdn.www.gob.pe,Virtual (enlinea.minedu.gob.pe),Mayoría de avisos son 276,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-5-167.html
+UGEL 4,Educación - UGEL,144,sí,Web propia con PDF,38.187.4.52,http://38.187.4.52/grupo-convocatorias/consulta/administrativo,,PDF directo en servidor por IP,Según bases,"Avisos vistos: régimen 276, no CAS",https://www.convocatoriasdetrabajo.com/organizacion-UGEL-4-181.html
+RED SALUD HUAMANGA,Salud - Red de salud,144,sí,Google Drive,redsaludhuamanga.pe,https://redsaludhuamanga.pe/convocatorias/,https://drive.google.com/file/d/10Os78nodUqVAovlrHIAbA5ctYKQIs73w/view,PDF en Google Drive,Presencial,,https://www.convocatoriasdetrabajo.com/organizacion-RED-SALUD-HUAMANGA-708.html
+HOSPITAL REGIONAL ABANCAY,Salud - Hospital,131,sí,Web propia con PDF,hospitalabancaygdv.gob.pe,https://www.hospitalabancaygdv.gob.pe/convocatorias,https://www.hospitalabancaygdv.gob.pe/assets/uploads/2026/11/cp_proc_422_1794290461.pdf,PDF directo,Presencial,,https://www.convocatoriasdetrabajo.com/organizacion-HOSPITAL-REGIONAL-ABANCAY-548.html
+UGEL-7,Educación - UGEL,122,sí,Web propia con PDF,ugel07.gob.pe,https://www.ugel07.gob.pe/convocatoria-cas/,https://www.ugel07.gob.pe/wp-content/uploads/2026/11/CAS-072-BASES-ASISTENTE-ADMINISTRATIVO.pdf,PDF directo (WordPress),Correo electrónico,robots.txt bloquea a algunos bots,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-7-261.html
+UNIVERSIDAD TORIBIO RODRÍGUEZ - UNTRM,Universidad,110,sí,Web propia con PDF,untrm.edu.pe,https://untrm.edu.pe/trabaja-con-nosotros/,https://untrm.edu.pe/convocatorias-untrm/resolucion-directoral-n-638-2026.pdf,PDF directo,Presencial,Mayoría son concursos docentes,https://www.convocatoriasdetrabajo.com/organizacion-UNIVERSIDAD-TORIBIO-RODRIGUEZ-UNTRM-613.html
+HOSPITAL DANIEL ALCIDES CARRION,Salud - Hospital,98,sí,gob.pe,gob.pe/institucion/hndac,https://www.gob.pe/institucion/hndac/colecciones/53748-convocatorias-cas,https://cdn.www.gob.pe/uploads/document/file/10957967/8822871-proceso-de-convocatoria-bases-de-contratacion-administrativa-de-servicios-n-001-2026-hndac.pdf,PDF en cdn.www.gob.pe,Presencial,,https://www.convocatoriasdetrabajo.com/organizacion-HOSPITAL-DANIEL-ALCIDES-CARRION-242.html
+UGEL 6,Educación - UGEL,72,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-6-121.html
+DIRECCION DE SALUD(DIRESA) AMAZONAS,Salud - DIRESA/GERESA,71,sí,gob.pe,gob.pe/institucion/regionamazonas-diresa,https://www.gob.pe/institucion/regionamazonas-diresa/informes-publicaciones,https://www.gob.pe/institucion/regionamazonas-diresa/informes-publicaciones/8796318-concurso-publico-de-meritos-n-001-2026-dl-n-1057-cas,Página gob.pe con adjuntos,Virtual (convocatorias.regionamazonas.gob.pe),,https://www.convocatoriasdetrabajo.com/organizacion-DIRECCION-DE-SALUD-DIRESA-AMAZONAS-321.html
+MINISTERIO DE LA MUJER(MIMP),Ministerio,70,sí,gob.pe,gob.pe/institucion/mimp,https://www.gob.pe/institucion/mimp/colecciones/90830-convocatorias-cas-2026,https://www.gob.pe/institucion/mimp/informes-publicaciones/8776800-convocatoria-cas-n-262-2026,Página gob.pe con adjuntos,Virtual (convocatoriatalento.mimp.gob.pe),,https://www.convocatoriasdetrabajo.com/organizacion-MINISTERIO-DE-LA-MUJER-MIMP-141.html
+HOSPITAL REGIONAL DE MOQUEGUA,Salud - Hospital,69,sí,Google Drive,hospitalmoquegua.gob.pe,https://www.hospitalmoquegua.gob.pe/portal/index.php/convocatorias/mnu-cas,https://drive.google.com/file/d/1-ILHmY6CSWqqG1IBLWq6QobGG2TrlZZy/view,PDF en Google Drive,Virtual (formulario propio),,https://www.convocatoriasdetrabajo.com/organizacion-HOSPITAL-REGIONAL-DE-MOQUEGUA-644.html
+MINISTERIO DE EDUCACIÓN(MINEDU),Ministerio,67,sí,Portal propio de postulación,postulacioncas.minedu.gob.pe,https://postulacioncas.minedu.gob.pe/PostulacionCas/,https://postulacioncas.minedu.gob.pe/PostulacionCas/Home/Convocatoria/29916,Ficha por ID /Home/Convocatoria/{id},Virtual,,https://www.convocatoriasdetrabajo.com/organizacion-MINISTERIO-DE-EDUCACION-MINEDU-35.html
+SUNARP,Organismo / ente adscrito,65,sí,gob.pe,gob.pe/institucion/sunarp,https://www.gob.pe/institucion/sunarp/colecciones/2192-concursos-publicos-de-meritos-plazas-practicantes-zona-registral-n-x,https://www.gob.pe/institucion/sunarp/informes-publicaciones/8834742-practicante-n-045-2026-sunarp-zrn-x,Página gob.pe con adjuntos,Google Forms,Avisos vistos: prácticas,https://www.convocatoriasdetrabajo.com/organizacion-SUNARP-47.html
+PROGRAMA WARMI ÑAN,Programa nacional,61,sí,Portal propio de postulación,casrrhh.warminan.gob.pe,https://casrrhh.warminan.gob.pe/convocatorias/,https://casrrhh.warminan.gob.pe/reclutamiento/procesos/S2082026.pdf,"PDF directo, URL predecible procesos/S{n}{año}.pdf",Virtual (aplicativo CAS),robots.txt bloquea a algunos bots,https://www.convocatoriasdetrabajo.com/organizacion-PROGRAMA-NACIONAL-WARMI-NAN-1821.html
+CUNA MÁS,Programa nacional,58,sí,Portal propio de postulación,extranet.cunamas.gob.pe,http://extranet.cunamas.gob.pe/jobs,http://extranet.cunamas.gob.pe/web/content/hr.job/8043/attach_base,PDF por ID (Odoo hr.job),Virtual (extranet),Odoo: /jobs lista ofertas,https://www.convocatoriasdetrabajo.com/organizacion-CUNA-MAS-65.html
+MINISTERIO DE JUSTICIA(MINJUS),Ministerio,56,sí,Portal propio de postulación,convocatoria.minjus.gob.pe,https://convocatoria.minjus.gob.pe/convocatoria/public/index.xhtml,,PDF dentro de portal JSF (requiere navegar),Virtual,JSF/xhtml: necesita navegador headless,https://www.convocatoriasdetrabajo.com/organizacion-MINISTERIO-DE-JUSTICIA-MINJUS-42.html
+HOSPITAL DOCENTE DE CAJAMARCA,Salud - Hospital,51,sí,Web propia con PDF,hrc.gob.pe,https://www.hrc.gob.pe/portal/mn/175,https://www.hrc.gob.pe/media/portal/BRGKY/documento/99823/PROCESO_N_002_-_2026_-_CAS.pdf,PDF directo (CMS regional Cajamarca),Presencial,Mismo CMS que Agricultura Cajamarca,https://www.convocatoriasdetrabajo.com/organizacion-HOSPITAL-DOCENTE-DE-CAJAMARCA-536.html
+UGEL 04 - TRUJILLO SUR ESTE,Educación - UGEL,50,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-04-TRUJILLO-SUR-ESTE-569.html
+GERENCIA DE SALUD AREQUIPA,Salud - DIRESA/GERESA,48,sí,Web propia con PDF,saludarequipa.gob.pe,https://saludarequipa.gob.pe/convocatorias/,https://saludarequipa.gob.pe/2026/11/05/proceso-de-seleccion-n-004-2026-del-regimen-laboral-d-l-n-276-y-d-l-n-1057-cas/,Entrada WordPress con PDF,Presencial,,https://www.convocatoriasdetrabajo.com/organizacion-GERENCIA-DE-SALUD-AREQUIPA-382.html
+MUNICIPALIDAD DE LA PERLA,Municipalidad,46,sí,Web propia con PDF,munilaperla.gob.pe,https://www.munilaperla.gob.pe/convocatoria-D-L-N%C2%B0728-mdlp.html,https://www.munilaperla.gob.pe/pdf/Convocatorias-728/BASES%20DE%20PROCESO%20DE%20SELECCI%C3%93N%20DL.%20728%20-%20001-2026.pdf,PDF directo,Presencial,Avisos vistos: 728,https://www.convocatoriasdetrabajo.com/organizacion-MUNICIPALIDAD-DE-LA-PERLA-150.html
+IRO TRUJILLO,Salud - Instituto,43,sí,Web propia con PDF,irotrujillo.gob.pe,https://www.irotrujillo.gob.pe/v7/convoc.php,https://irotrujillo.gob.pe/files/ProcSel2026/BASES_CAS-007-2026.pdf,PDF escaneado (sin texto: requiere OCR),Presencial,,https://www.convocatoriasdetrabajo.com/organizacion-IRO-TRUJILLO-563.html
+DIRECCION DE EDUCACION(DRE) TACNA,Educación - DRE,41,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-DIRECCION-REGIONAL-DE-EDUCACION-TACNA-632.html
+UGEL TACNA,Educación - UGEL,41,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-TACNA-525.html
+ONPE,Organismo autónomo,40,sí,Web propia con PDF,onpe.gob.pe,https://www.onpe.gob.pe/transparencia/convocatorias-cas-cap/,https://www.onpe.gob.pe/modTransparencia/Convocatorias/CAS/CAS-GRH-AGRH-12nov.pdf,PDF directo,Presencial,,https://www.convocatoriasdetrabajo.com/organizacion-ONPE-3.html
+MINISTERIO DE TRABAJO(MTPE),Ministerio,39,sí,Portal propio de postulación,convocatorias.trabajo.gob.pe,https://convocatorias.trabajo.gob.pe/externo/portal/ConvocatoriasPortal.aspx,,PDF dentro de portal ASP.NET,Virtual,,https://www.convocatoriasdetrabajo.com/organizacion-MINISTERIO-DE-TRABAJO-MTPE-45.html
+ATU LIMA Y CALLAO,Organismo / ente adscrito,39,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-ATU-865.html
+UGEL VENTANILLA,Educación - UGEL,38,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-VENTANILLA-260.html
+UGEL2 LA ESPERANZA,Educación - UGEL,36,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UGEL2-LA-ESPERANZA-566.html
+HOSPITAL REGIONAL VIRGEN DE FÁTIMA,Salud - Hospital,36,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-HOSPITAL-REGIONAL-VIRGEN-DE-FATIMA-1666.html
+RED DE SALUD GRAN CHIMÚ,Salud - Red de salud,31,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-RED-DE-SALUD-GRAN-CHIMU-1064.html
+MUNICIPALIDAD DE CUSCO,Municipalidad,30,sí,Web propia con PDF,web.cusco.gob.pe,https://web.cusco.gob.pe/category/convocatorias/,https://web.cusco.gob.pe/convocatoria/convocatoria-728-nro-006-2026/,Entrada WordPress con PDF,Presencial,,https://www.convocatoriasdetrabajo.com/organizacion-MUNICIPALIDAD-CUSCO-86.html
+INDECOPI,Organismo / ente adscrito,29,sí,gob.pe,gob.pe/institucion/indecopi,https://oportunidadeslaborales.indecopi.gob.pe/convocatorias-cas/,https://www.gob.pe/institucion/indecopi/informes-publicaciones/8819681-convocatoria-cas-n-173-2026-analista-economico-ceb,Página gob.pe con adjuntos,Virtual (servicio.indecopi.gob.pe),,https://www.convocatoriasdetrabajo.com/organizacion-INDECOPI-26.html
+GOBIERNO REGIONAL DE AREQUIPA,Gobierno regional,28,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-GOBIERNO-REGIONAL-DE-AREQUIPA-294.html
+UNIVERSIDAD DE LA AMAZONÍA,Universidad,28,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UNIVERSIDAD-DE-LA-AMAZONIA-1361.html
+RED DE SALUD CHANCHAMAYO,Salud - Red de salud,26,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-RED-DE-SALUD-CHANCHAMAYO-850.html
+DIRECCION DE EDUCACION(DRE) ANCASH,Educación - DRE,24,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-DIRECCION-DE-EDUCACION-DRE-ANCASH-437.html
+SERNANP,Organismo / ente adscrito,24,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-SERNANP-107.html
+UNIVERSIDAD AUTÓNOMA DE TAYACAJA(UNAT),Universidad,23,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UNIVERSIDAD-AUTONOMA-DE-TAYACAJA-UNAT-574.html
+MINISTERIO DE CULTURA,Ministerio,23,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-MINISTERIO-DE-CULTURA-33.html
+MINISTERIO PÚBLICO - FISCALÍA,Ministerio,22,sí,Portal propio de postulación,portal.mpfn.gob.pe,https://portal.mpfn.gob.pe/convoca/convocatorias,https://portal.mpfn.gob.pe/convoca/anexos/convocatoria/2136,Anexos por ID predecible /convoca/anexos/convocatoria/{id},Virtual,,https://www.convocatoriasdetrabajo.com/organizacion-MINISTERIO-PUBLICO-FISCALIA-158.html
+OEFA,Organismo / ente adscrito,22,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-OEFA-75.html
+RED SERVICIOS SALUD CUSCO SUR,Salud - Red de salud,21,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-RED-SERVICIOS-SALUD-CUSCO-SUR-662.html
+DIRECCIÓN DE TRANSPORTES(DRTC) PUNO,Gobierno regional,20,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-DIRECCION-DE-TRANSPORTES-DRTC-PUNO-1308.html
+RED SALUD HUANUCO,Salud - Red de salud,20,sí,gob.pe,redsaludhuanuco.gob.pe,https://redsaludhuanuco.gob.pe/webpage/convocatorias/1/,https://cdn.www.gob.pe/uploads/document/file/10965164/8827561-bases.pdf,PDF en cdn.www.gob.pe (listado en web propia),Presencial,,https://www.convocatoriasdetrabajo.com/organizacion-RED-SALUD-HUANUCO-721.html
+UGEL CHEPÉN,Educación - UGEL,19,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-CHEPEN-389.html
+SUNAFIL,Organismo / ente adscrito,19,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-SUNAFIL-72.html
+GERENCIA SUB REGIONAL CASTROVIRREYNA,Gobierno regional,18,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-GERENCIA-SUB-REGIONAL-CASTROVIRREYNA-1018.html
+UNIVERSIDAD AGRARIA LA MOLINA,Universidad,17,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UNIVERSIDAD-AGRARIA-LA-MOLINA-184.html
+UGEL VICTOR FAJARDO,Educación - UGEL,17,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-VICTOR-FAJARDO-403.html
+DEFENSORIA DEL PUEBLO,Organismo autónomo,16,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-DEFENSORIA-DEL-PUEBLO-29.html
+HOSPITAL CAYETANO HEREDIA,Salud - Hospital,16,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-HOSPITAL-CAYETANO-537.html
+UGEL LA CONVENCIÓN,Educación - UGEL,16,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-LA-CONVENCION-803.html
+IRTP,Organismo / ente adscrito,16,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-IRTP-64.html
+GOBIERNO REGIONAL LIBERTAD,Gobierno regional,15,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-GOBIERNO-REGIONAL-LIBERTAD-118.html
+AUTORIDAD NACIONAL DEL AGUA,Organismo / ente adscrito,15,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-ANA-30.html
+INABIF,Programa nacional,15,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-INABIF-27.html
+HOSPITAL DOS DE MAYO,Salud - Hospital,15,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-HOSPITAL-DOS-DE-MAYO-496.html
+PROCURADURÍA DEL ESTADO,Organismo / ente adscrito,15,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-PROCURADURIA-DEL-ESTADO-1133.html
+PROGRAMA PAIS,Programa nacional,15,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-PROGRAMA-PAIS-476.html
+UGEL HUAYLAS,Educación - UGEL,14,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-HUAYLAS-266.html
+RED DE SALUD CAMANÁ CARAVELÍ,Salud - Red de salud,14,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-RED-DE-SALUD-CAMANA-CARAVELI-1664.html
+SUNASS,Organismo / ente adscrito,13,sí,Portal propio de postulación,servicio.sunass.gob.pe,https://servicio.sunass.gob.pe/siscon/cas/publicadas,,PDF dentro de portal,Virtual,,https://www.convocatoriasdetrabajo.com/organizacion-SUNASS-16.html
+COFOPRI,Organismo / ente adscrito,12,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-COFOPRI-68.html
+GERENCIA DE AGRICULTURA AREQUIPA,Gobierno regional,12,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-GERENCIA-DE-AGRICULTURA-AREQUIPA-362.html
+MUNICIPALIDAD LA VICTORIA - CHICLAYO,Municipalidad,12,sí,Web propia con PDF,munilavictoriach.gob.pe,https://www.munilavictoriach.gob.pe/webDos/index.php?id=7&opc=0&catConv=4&anio=30,https://www.munilavictoriach.gob.pe/webDos/Administracion/arch_convocatorias/BASES-002-2026-MDLV.pdf,PDF directo,Presencial o virtual (SGD),,https://www.convocatoriasdetrabajo.com/organizacion-MUNICIPALIDAD-LA-VICTORIA-CHICLAYO-739.html
+MUNICIPALIDAD DE ATE,Municipalidad,12,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-MUNICIPALIDAD-DE-ATE-186.html
+UNSAAC,Universidad,12,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UNSAAC-37.html
+SUNEDU,Organismo / ente adscrito,11,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-SUNEDU-290.html
+UNIVERSIDAD HERMILIO VALDIZAN,Universidad,11,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UNIVERSIDAD-HERMILIO-VALDIZAN-468.html
+DIRECCIÓN DE AGRICULTURA CAJAMARCA,Gobierno regional,11,sí,Web propia con PDF,agriculturacajamarca.gob.pe,https://www.agriculturacajamarca.gob.pe/portal/mn/214,https://www.agriculturacajamarca.gob.pe/media/portal/LHICN/documento/104559/BASES_PARA_EL_CONCURSO_P%C3%9ABLICO_CAS_POR_REMPLAZO_Y_728_1.pdf,PDF directo (CMS regional Cajamarca),Presencial,,https://www.convocatoriasdetrabajo.com/organizacion-DIRECCION-AGRICULTURA-CAJAMARCA-707.html
+UGEL HUANTA,Educación - UGEL,11,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-HUANTA-618.html
+UGEL HUARMEY,Educación - UGEL,10,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-HUARMEY-427.html
+DIRECCIÓN DE EDUCACIÓN(DRE)LIMA,Educación - DRE,10,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-DIRECCION-REGIONAL-EDUCACION-DRE-LIMA-129.html
+RED DE SALUD OTUZCO,Salud - Red de salud,10,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-RED-DE-SALUD-OTUZCO-516.html
+INDECI,Organismo / ente adscrito,10,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-INDECI-53.html
+HOSPITAL JULIO CESAR DEMARINI CARO,Salud - Hospital,10,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-HOSPITAL-JULIO-CESAR-DEMARINI-CARO-1391.html
+GOBIERNO REGIONAL DE HUANCAVELICA,Gobierno regional,10,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-GOBIERNO-REGIONAL-DE-HUANCAVELICA-512.html
+HOSPITAL TARAPOTO,Salud - Hospital,9,sí,Web propia con PDF,hospitaltarapoto.gob.pe,https://hospitaltarapoto.gob.pe/nuevo/convocatorias-cas/,https://hospitaltarapoto.gob.pe/nuevo/wp-content/uploads/convocatorias/cas/2026/BASES%20Y%20PERFILES%20CONVOCATORIA%20CAS%20SUPLENCIA%2013-2026.pdf,"PDF con texto, perfil formato SERVIR (WordPress)",Presencial,"Verificado: 31 págs., tablas de perfil",https://www.convocatoriasdetrabajo.com/organizacion-HOSPITAL-TARAPOTO-575.html
+UGEL GRAN CHIMÚ,Educación - UGEL,9,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-GRAN-CHIMU-1051.html
+MIGRACIONES,Organismo / ente adscrito,9,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-MIGRACIONES-17.html
+UNIVERSIDAD NACIONAL DEL VRAEM,Universidad,9,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UNIVERSIDAD-NACIONAL-DEL-VRAEM-1865.html
+COLEGIO MILITAR LEONCIO PRADO,Defensa / policía,9,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-COLEGIO-MILITAR-LEONCIO-PRADO-1331.html
+MARINA DE GUERRA,Defensa / policía,9,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-MARINA-DE-GUERRA-102.html
+PROVIAS NACIONAL,Programa nacional,8,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-PROVIAS-NACIONAL-252.html
+UGEL CORONEL PORTILLO,Educación - UGEL,8,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-CORONEL-PORTILLO-545.html
+SUTRAN,Organismo / ente adscrito,8,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-SUTRAN-36.html
+UGEL PAUCAR DEL SARA SARA,Educación - UGEL,8,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-PAUCAR-DEL-SARA-SARA-557.html
+MINISTERIO DE LA PRODUCCIÓN(PRODUCE),Ministerio,8,sí,Web propia con PDF,transparencia.produce.gob.pe,https://transparencia.produce.gob.pe/index.php/formularios-de-atencion-al-ciudadano/convocatorias-cas,,PDF en portal de transparencia,Según bases,,https://www.convocatoriasdetrabajo.com/organizacion-MINISTERIO-DE-LA-PRODUCCION-38.html
+UGEL COTABAMBAS,Educación - UGEL,8,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-COTABAMBAS-989.html
+MINISTERIO DE COMERCIO(MINCETUR),Ministerio,8,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-MINISTERIO-DE-COMERCIO-MINCETUR-10.html
+UGEL BOLOGNESI,Educación - UGEL,7,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-BOLOGNESI-1196.html
+OSINERGMIN,Organismo / ente adscrito,7,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-OSINERGMIN-15.html
+PROMPERÚ,Organismo / ente adscrito,7,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-PROMPERU-18.html
+ACADEMIA DE LA MAGISTRATURA(AMAG),Organismo / ente adscrito,7,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-ACADEMIA-DE-LA-MAGISTRATURA-AMAG-272.html
+SENAMHI,Organismo / ente adscrito,7,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-SENAMHI-13.html
+JUNTOS,Programa nacional,7,sí,Portal propio de postulación,convocatoria.juntos.gob.pe,https://convocatoria.juntos.gob.pe/Convocatoria/Lista,https://convocatoria.juntos.gob.pe/Convocatoria/DescargarArchivoBases/?id=2256,PDF por ID predecible DescargarArchivoBases/?id={id},Virtual,,https://www.convocatoriasdetrabajo.com/organizacion-JUNTOS-66.html
+UNIVERSIDAD DE TRUJILLO,Universidad,6,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UNIVERSIDAD-DE-TRUJILLO-191.html
+INPE,Organismo / ente adscrito,6,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-INPE-82.html
+RED DE SALUD TACNA,Salud - Red de salud,6,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-RED-DE-SALUD-TACNA-800.html
+UNIVERSIDAD SAN CRISTÓBAL DE HUAMANGA,Universidad,6,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UNIVERSIDAD-SAN-CRISTOBAL-DE-HUAMANGA-936.html
+HOSPITAL MARÍA AUXILIADORA,Salud - Hospital,6,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-HOSPITAL-MARIA-AUXILIADORA-225.html
+UGEL CARHUAZ,Educación - UGEL,5,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-CARHUAZ-1399.html
+OSINFOR,Organismo / ente adscrito,5,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-OSINFOR-58.html
+SUCAMEC,Organismo / ente adscrito,5,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-SUCAMEC-52.html
+UGEL ANDAHUAYLAS,Educación - UGEL,5,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-ANDAHUAYLAS-1284.html
+FONDEPES,Organismo / ente adscrito,5,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-FONDEPES-114.html
+RED DE SALUD LEONCIO PRADO,Salud - Red de salud,5,sí,Portal propio de postulación,convocatorias.redsaludleoncioprado.gob.pe,https://convocatorias.redsaludleoncioprado.gob.pe/cas,https://antarys.redsaludleoncioprado.gob.pe/storage/jobs/6af7240317032/6af762c4819a2_BASES_DEL_CONCURSO_CAS_04-2026.pdf,PDF en almacenamiento del portal,Virtual,,https://www.convocatoriasdetrabajo.com/organizacion-RED-DE-SALUD-LEONCIO-PRADO-826.html
+UGEL PURÚS,Educación - UGEL,5,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-PURUS-1095.html
+PRONIED,Programa nacional,5,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-PRONIED-136.html
+MINISTERIO DESARROLLO AGRARIO(MIDAGRI),Ministerio,5,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-MINISTERIO-DESARROLLO-AGRARIO-MIDAGRI-1082.html
+UNIVERSIDAD AGRARIA DE LA SELVA,Universidad,4,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UNIVERSIDAD-AGRARIA-DE-LA-SELVA-626.html
+MUNICIPALIDAD SAN AGUSTÍN DE CAJAS,Municipalidad,4,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-MUNICIPALIDAD-SAN-AGUSTIN-DE-CAJAS-675.html
+HOSPITAL HIPOLITO UNANUE,Salud - Hospital,4,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-HOSPITAL-HIPOLITO-UNANUE-470.html
+DEVIDA,Organismo / ente adscrito,4,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-DEVIDA-55.html
+PRONABEC,Programa nacional,4,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-PRONABEC-71.html
+DIRECCIÓN DE SALUD(DIRESA) MADRE DE DIOS,Educación - DRE,4,sí,Portal propio de postulación,apps.diresamdd.gob.pe,http://apps.diresamdd.gob.pe/convocatorias/cas,http://apps.diresamdd.gob.pe/convocatorias/detalle_convocatoria/130044/,Ficha por ID /detalle_convocatoria/{id}/,Presencial,,https://www.convocatoriasdetrabajo.com/organizacion-DIRECCION-DE-SALUD-DIRESA-MADRE-DE-DIOS-811.html
+PROGRAMA JOVENES PRODUCTIVOS,Programa nacional,4,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-PROGRAMA-JOVENES-PRODUCTIVOS-268.html
+UGEL SUCRE,Educación - UGEL,4,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-SUCRE-917.html
+MINISTERIO DE ENERGÍA Y MINAS (MINEM),Ministerio,4,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-MINISTERIO-DE-ENERGIA-Y-MINAS-MINEM-40.html
+MUNICIPALIDAD SURQUILLO,Municipalidad,4,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-MUNICIPALIDAD-SURQUILLO-585.html
+UGEL MARISCAL CÁCERES,Educación - UGEL,4,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-MARISCAL-CACERES-1388.html
+MINISTERIO DEL INTERIOR(MININTER),Ministerio,4,sí,Portal propio de postulación,aplicaciones.mininter.gob.pe,https://aplicaciones.mininter.gob.pe/sisconvir/convocatorias/index,,PDF dentro de portal,Virtual,,https://www.convocatoriasdetrabajo.com/organizacion-MINISTERIO-DEL-INTERIOR-MININTER-41.html
+RED DE SALUD PACÍFICO SUR ANCASH,Salud - Red de salud,3,sí,Web propia con PDF,redsaludpacificosur.gob.pe,https://www.redsaludpacificosur.gob.pe/oportunidad_laboral.php,https://www.redsaludpacificosur.gob.pe/CAS%202026%20VI/BASES%20CONCURSO%20CAS%202026%20VI.pdf,PDF directo,Presencial,,https://www.convocatoriasdetrabajo.com/organizacion-RED-DE-SALUD-PACIFICO-SUR-ANCASH-393.html
+PROGRAMA NACIONAL CONTIGO,Programa nacional,3,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-PROGRAMA-NACIONAL-CONTIGO-980.html
+MINISTERIO DEL AMBIENTE (MINAM),Ministerio,3,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-MINISTERIO-DEL-AMBIENTE-MINAM-39.html
+SERFOR,Organismo / ente adscrito,2,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-SERFOR-74.html
+DIRECCIÓN DE EDUCACIÓN(DRE) SAN MARTÍN,Educación - DRE,2,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-DIRECCION-EDUCACION-DRE-SAN-MARTIN-954.html
+UGEL ASUNCIÓN,Educación - UGEL,2,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-ASUNCION-1343.html
+MINISTERIO DE INCLUSIÓN SOCIAL(MIDIS),Ministerio,2,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-MINISTERIO-DE-INCLUSION-SOCIAL-MIDIS-20.html
+AUTORIDAD NACIONAL DE INFRAESTRUCTURA,Organismo / ente adscrito,2,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-ANIN-AUTORIDAD-NACIONAL-INFRAESTRUCTURA-1579.html
+PROGRAMA CONSERVACIÓN DE BOSQUES,Programa nacional,2,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-PROGRAMA-CONSERVACION-DE-BOSQUES-110.html
+ELECTRO PUNO,Empresa pública,2,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-electro-puno-473.html
+UGEL SAN PABLO,Educación - UGEL,2,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-SAN-PABLO-903.html
+UNIVERSIDAD NACIONAL JORGE BASADRE,Educación - DRE,2,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UNIVERSIDAD-NACIONAL-JORGE-BASADRE-868.html
+INVERMET,Organismo / ente adscrito,2,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-INVERMET-113.html
+GOBIERNO REGIONAL DE AYACUCHO,Gobierno regional,2,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-GOBIERNO-REGIONAL-DE-AYACUCHO-230.html
+AGROMERCADO,Organismo / ente adscrito,2,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-AGROMERCADO-1695.html
+EGEMSA,Empresa pública,2,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-egemsa-334.html
+DIRESA TACNA,Salud - DIRESA/GERESA,2,sí,gob.pe,gob.pe/institucion/regiontacna-diresa,https://www.gob.pe/institucion/regiontacna-diresa/informes-publicaciones/tipos/80-convocatorias-de-trabajo,https://www.gob.pe/institucion/regiontacna-diresa/informes-publicaciones/8800461-convocatoria-cas-n-009-2026-drs-t-gob-reg-tacna,Página gob.pe con adjuntos,Presencial,,https://www.convocatoriasdetrabajo.com/organizacion-DIRESA-TACNA-752.html
+DIRECCIÓN REGIONAL SALUD(DIRESA) HUÁNUCO,Salud - DIRESA/GERESA,2,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-DIRECCION-REGIONAL-SALUD-DIRESA-HUANUCO-605.html
+ENACO,Empresa pública,2,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-ENACO-299.html
+PROGRAMA NACIONAL DE CENTROS JUVENILES PRONACEJ,Programa nacional,2,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-PROGRAMA-DE-CENTROS-JUVENILES-779.html
+SEAL,Empresa pública,2,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-SEAL-1176.html
+PAE - PROGRAMA DE ALIMENTACIÓN ESCOLAR,Programa nacional,2,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-PAE-PROGRAMA-DE-ALIMENTACION-ESCOLAR-1905.html
+AGROBANCO,Empresa pública,2,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-BANCO-AGROPECUARIO-AGROBANCO-622.html
+IPD,Organismo / ente adscrito,2,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-IPD-124.html
+ZOFRATACNA,Empresa pública,2,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-ZOFRATACNA-783.html
+SAN GABÁN S.A.,Empresa pública,2,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-SAN-GABAN-SA-1166.html
+DIRECCIÓN DE EDUCACIÓN(DRE) UCAYALI,Educación - DRE,2,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-DIRECCION-DE-EDUCACION-DRE-UCAYALI-434.html
+BANCO CENTRAL DE RESERVA(BCRP),Organismo autónomo,2,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-BCRP-BANCO-CENTRAL-DE-RESERVA-354.html
+MUNICIPALIDAD DE GROCIO PRADO,Municipalidad,1,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-MUNICIPALIDAD-GROCIO-PRADO-1179.html
+UGEL PALPA,Educación - UGEL,1,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-PALPA-955.html
+UGEL LA MAR,Educación - UGEL,1,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-LA-MAR-665.html
+COFIDE,Empresa pública,1,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-COFIDE-1562.html
+GERENCIA TRABAJO AREQUIPA,Gobierno regional,1,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-GERENCIA-TRABAJO-AREQUIPA-974.html
+MUNICIPALIDAD DE MAGDALENA DEL MAR,Municipalidad,1,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-MUNICIPALIDAD-DE-MAGDALENA-DEL-MAR-221.html
+MUNICIPALIDAD DE PACOCHA,Municipalidad,1,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-MUNICIPALIDAD-DE-PACOCHA-1029.html
+EMAPAB,Empresa pública,1,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-EMAPAB-1930.html
+DIRECCIÓN TRANSPORTES(DRTC) MADRE DE DIOS,Educación - DRE,1,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-DIRECCION-TRANSPORTES-MADRE-DE-DIOS-DRTC-985.html
+UGEL1 EL PORVENIR,Educación - UGEL,1,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UGEL1-EL-PORVENIR-561.html
+UGEL PISCO,Educación - UGEL,1,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-PISCO-1291.html
+SANIPES,Organismo / ente adscrito,1,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-SANIPES-185.html
+ESCUELA DE BALLET(ENSB),Organismo / ente adscrito,1,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-ESCUELA-DE-BALLET-ENSB-296.html
+UGEL HUANCA SANCOS,Educación - UGEL,1,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-HUANCA-SANCOS-623.html
+MINISTERIO DE ECONOMÍA (MEF),Ministerio,1,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-MINISTERIO-DE-ECONOMIA-MEF-19.html
+FONAFE,Empresa pública,1,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-FONAFE-204.html
+UGEL CHICLAYO,Educación - UGEL,1,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UGEL-CHICLAYO-686.html
+POLICÍA NACIONAL(PNP),Defensa / policía,1,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-POLICIA-NACIONAL-PNP-160.html
+GERENCIA SUB REGIONAL HUAYTARÁ,Gobierno regional,1,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-GERENCIA-SUB-REGIONAL-HUAYTARA-1450.html
+UICET,Organismo / ente adscrito,1,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-UICET-1856.html
+"SUPERINTENDENCIA DE BANCA, SEGUROS Y AFP",Organismo autónomo,1,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-SUPERINTENDENCIA-DE-BANCA--SEGUROS-Y-AFP-1539.html
+COPESCO CUSCO,Organismo / ente adscrito,1,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-COPESCO-CUSCO-1113.html
+BIBLIOTECA NACIONAL(BNP),Organismo / ente adscrito,1,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-BIBLIOTECA-NACIONAL-BNP-320.html
+CONADIS,Organismo / ente adscrito,1,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-CONADIS-200.html
+OSIPTEL,Organismo / ente adscrito,1,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-OSIPTEL-32.html
+MINISTERIO DE DEFENSA (MINDEF),Ministerio,1,no,,,,,,,,https://www.convocatoriasdetrabajo.com/organizacion-MINISTERIO-DE-DEFENSA-MINDEF-34.html

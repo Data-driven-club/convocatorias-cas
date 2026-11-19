@@ -221,3 +221,14 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# --- convocatorias-cas ---
+# La base histórica se publica como Release "datos", no se versiona en git
+*.db
+*.db-journal
+# PDF descargados por organismos/analizar_bases_pdf.py (solo se guardan links y análisis)
+pdfs/
+# Salidas locales de los scripts de organismos/
+fuentes_detectadas.csv
+resumen_por_entidad.csv
+diagnostico_pdfs.csv
