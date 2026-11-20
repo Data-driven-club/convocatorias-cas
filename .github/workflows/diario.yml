@@ -1,0 +1,80 @@
+name: Scraping diario CAS
+
+on:
+  schedule:
+    - cron: "0 12 * * *"   # 12:00 UTC = 7:00 a. m. hora de Lima
+  workflow_dispatch:        # botón "Run workflow" en la pestaña Actions
+    inputs:
+      departamento:
+        description: "Código de departamento (vacío = todos; 15 = Lima)"
+        required: false
+      carrera:
+        description: "Código de carrera (vacío = todas)"
+        required: false
+      nivel:
+        description: "Código de nivel de estudios (vacío = todos)"
+        required: false
+      max_paginas:
+        description: "Máximo de páginas del listado"
+        required: false
+        default: "50"
+
+permissions:
+  contents: write           # para hacer commit de data/ e informes/ y subir el Release
+
+concurrency:
+  group: scraping-diario
+  cancel-in-progress: false
+
+jobs:
+  diario:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    env:
+      TZ: America/Lima
+      GH_TOKEN: ${{ github.token }}
+      # Valores por defecto para la corrida programada: se definen en
+      # Settings > Secrets and variables > Actions > Variables (opcionales).
+      DEPARTAMENTO: ${{ inputs.departamento || vars.DEPARTAMENTO }}
+      CARRERA: ${{ inputs.carrera || vars.CARRERA }}
+      NIVEL: ${{ inputs.nivel || vars.NIVEL }}
+      MAX_PAGINAS: ${{ inputs.max_paginas || vars.MAX_PAGINAS || '50' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Descargar base histórica (Release "datos")
+        run: |
+          gh release download datos --pattern cas.db || echo "No hay base previa (primera corrida)."
+
+      - name: Scraping + CSV + informe
+        run: |
+          args=(--max-paginas "$MAX_PAGINAS")
+          [ -n "$DEPARTAMENTO" ] && args+=(--departamento "$DEPARTAMENTO")
+          [ -n "$CARRERA" ] && args+=(--carrera "$CARRERA")
+          [ -n "$NIVEL" ] && args+=(--nivel "$NIVEL")
+          python diario.py "${args[@]}"
+
+      - name: Publicar base histórica en el Release "datos"
+        if: always() && hashFiles('cas.db') != ''
+        run: |
+          gh release view datos >/dev/null 2>&1 || gh release create datos \
+            --title "Base histórica (SQLite)" \
+            --notes "cas.db se reemplaza en cada corrida diaria. Descárgala y ábrela con sqlite3 o DB Browser for SQLite."
+          gh release upload datos cas.db --clobber
+
+      - name: Guardar CSV e informe en el repositorio
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ informes/
+          if git diff --cached --quiet; then echo "Sin cambios."; exit 0; fi
+          git commit -m "Datos CAS $(date +%F)"
+          git pull --rebase
+          git push
