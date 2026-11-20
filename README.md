@@ -10,6 +10,7 @@ con análisis de las bases en PDF.
 |---|---|---|
 | `data/AAAA-MM-DD.csv` | En el repositorio (commit diario) | Todas las convocatorias vistas ese día. Columna `nueva_hoy` marca las nuevas. Se abre en Excel. |
 | `informes/AAAA-MM-DD.md` | En el repositorio (commit diario) | Lista de convocatorias nuevas y resumen de cada PDF de bases. GitHub lo muestra formateado. |
+| `data/looker/convocatorias.csv` y `data/looker/resumen_diario.csv` | En el repositorio (se sobrescriben cada día, URL fija) | Fuente para el dashboard de Looker Studio. Ver [docs/looker_studio.md](docs/looker_studio.md). |
 | `cas.db` (SQLite histórico) | [Release **datos**](../../releases/tag/datos) | Base completa con el texto de cada ficha y la tabla `bases_pdf`. Se reemplaza cada día. |
 
 Los PDF de bases **no se guardan**: se descargan, se analizan en memoria y solo se
@@ -65,6 +66,7 @@ de una hora; las siguientes solo bajan las nuevas.
 
 ```
 diario.py                     corrida diaria: scraper + CSV + análisis de PDF + informe
+looker.py                     CSV limpios para Looker Studio (data/looker/)
 scraper_cas.py                scraper del listado y las fichas -> SQLite (incremental)
 organismos/
   catalogo_organismos.csv     catálogo de organismos y sus fuentes oficiales
