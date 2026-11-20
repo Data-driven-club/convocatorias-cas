@@ -72,17 +72,21 @@ def analizar_pdfs(db, nuevas, max_pdfs, pausa):
     s = requests.Session()
     s.headers["User-Agent"] = UA
     n, ult = 0, 0.0
+    caidos = set()  # servidores que fallaron en esta corrida: no se insiste con ellos hoy
     for c in nuevas:
         url = c["enlace_bases"]
         if not url or url in hechos or not parece_pdf(url) or n >= max_pdfs:
             continue
+        host = urlparse(url_descarga(url)).netloc
+        if host in caidos:
+            continue  # sin registrar: se reintenta otro día
         n += 1
         hechos.add(url)  # varias convocatorias pueden compartir las mismas bases
         fila = {"url_bases": url, "convocatoria_id": c["id"],
                 "analizado_en": datetime.now().isoformat(timespec="seconds")}
         time.sleep(max(0, pausa - (time.time() - ult)))
         try:
-            r = s.get(url_descarga(url), timeout=60)
+            r = s.get(url_descarga(url), timeout=(10, 30))
             ult = time.time()
             r.raise_for_status()
             if not r.content.startswith(b"%PDF"):
@@ -91,6 +95,7 @@ def analizar_pdfs(db, nuevas, max_pdfs, pausa):
                 fila.update(estado="ok", **diagnosticar(io.BytesIO(r.content)))
         except Exception as ex:  # noqa
             fila["estado"] = f"error: {ex}"[:120]
+            caidos.add(host)
         print(f"  [pdf {n}] {urlparse(url).netloc}: {fila['estado']}", file=sys.stderr)
         db.execute(f"INSERT OR REPLACE INTO bases_pdf ({','.join(fila)}) VALUES ({','.join('?' * len(fila))})",
                    list(fila.values()))
@@ -146,7 +151,7 @@ def escribir_informe(ruta, hoy, vigentes, nuevas, pdfs):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--carrera"); ap.add_argument("--departamento"); ap.add_argument("--nivel")
-    ap.add_argument("--max-paginas", type=int, default=50)
+    ap.add_argument("--max-paginas", type=int, default=200)
     ap.add_argument("--pausa", type=float, default=3.0)
     ap.add_argument("--max-pdfs", type=int, default=40, help="PDF de bases a analizar por día")
     ap.add_argument("--db", default="cas.db")

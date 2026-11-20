@@ -281,7 +281,7 @@ def guardar(db, fila):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--carrera"); ap.add_argument("--departamento"); ap.add_argument("--nivel")
-    ap.add_argument("--max-paginas", type=int, default=50)
+    ap.add_argument("--max-paginas", type=int, default=200)
     ap.add_argument("--pausa", type=float, default=3.0)
     ap.add_argument("--db", default="cas.db")
     ap.add_argument("--sin-detalle", action="store_true")
@@ -297,11 +297,14 @@ def main():
     ya = {r[0] for r in db.execute("SELECT url FROM convocatorias WHERE texto_detalle IS NOT NULL")}
 
     url, pagina, total = f"{LISTADO}?{urlencode(params)}", 1, 0
+    vistos_corrida = set()
     while url and pagina <= a.max_paginas:
         print(f"[listado] página {pagina}: {url}", file=sys.stderr)
         avisos, sig = parse_listado(cli.get(url))
-        if not avisos:
+        # Fin del listado: página vacía o que solo repite avisos ya vistos en esta corrida
+        if not avisos or all(av["url"] in vistos_corrida for av in avisos):
             break
+        vistos_corrida.update(av["url"] for av in avisos)
         for av in avisos:
             av["filtros"] = urlencode(params)
             av["visto_en"] = AHORA

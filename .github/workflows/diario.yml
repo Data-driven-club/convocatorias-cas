@@ -16,9 +16,9 @@ on:
         description: "Código de nivel de estudios (vacío = todos)"
         required: false
       max_paginas:
-        description: "Máximo de páginas del listado"
+        description: "Máximo de páginas del listado (se detiene solo al llegar al final)"
         required: false
-        default: "50"
+        default: "200"
 
 permissions:
   contents: write           # para hacer commit de data/ e informes/ y subir el Release
@@ -39,7 +39,7 @@ jobs:
       DEPARTAMENTO: ${{ inputs.departamento || vars.DEPARTAMENTO }}
       CARRERA: ${{ inputs.carrera || vars.CARRERA }}
       NIVEL: ${{ inputs.nivel || vars.NIVEL }}
-      MAX_PAGINAS: ${{ inputs.max_paginas || vars.MAX_PAGINAS || '50' }}
+      MAX_PAGINAS: ${{ inputs.max_paginas || vars.MAX_PAGINAS || '200' }}
     steps:
       - uses: actions/checkout@v5
 
