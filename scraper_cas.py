@@ -39,7 +39,8 @@ from bs4 import BeautifulSoup
 BASE = "https://www.convocatoriasdetrabajo.com/"
 LISTADO = BASE + "convocatorias-cas-vigentes.php"
 UA = "cas-buscador-personal/0.1 (uso personal, 1 req/3s)"
-AHORA = None  # marca de tiempo común a toda la corrida
+AHORA = None
+RE_FICHA = re.compile(r"^https?://(www\.)?convocatoriasdetrabajo\.com/oportunidad-laboral-[^/]*-\d+\.html$")  # marca de tiempo común a toda la corrida
 
 MESES = {"ene": 1, "feb": 2, "mar": 3, "abr": 4, "may": 5, "jun": 6, "jul": 7,
          "ago": 8, "set": 9, "sep": 9, "oct": 10, "nov": 11, "dic": 12}
@@ -138,7 +139,9 @@ def parse_listado(html: str):
     vistos, avisos = set(), []
     for a in soup.select('a[href*="oportunidad-laboral-"]'):
         url = urljoin(BASE, a["href"].split("?")[0])
-        if url in vistos:
+        # Solo fichas del propio sitio: descarta los botones de compartir
+        # (LinkedIn, WhatsApp, Messenger...) que llevan la URL del aviso dentro.
+        if not RE_FICHA.match(url) or url in vistos:
             continue
         vistos.add(url)
         # Sube hasta el contenedor de la tarjeta (el que incluye "Sueldo")
@@ -167,6 +170,25 @@ def parse_listado(html: str):
 
 
 # ---------------------------------------------------------------- detalle
+def limpiar_entidad(cabecera):
+    """'Convocatoria PODER JUDICIAL CAS N° 024 - ...: PUESTO' -> 'PODER JUDICIAL'."""
+    if not cabecera:
+        return cabecera
+    t = re.sub(r"(?i)^convocatoria\s+", "", cabecera.strip())
+    return re.split(r"\s+CAS\s+N", t, maxsplit=1)[0].strip() or cabecera
+
+
+def elegir_bases(enlaces):
+    """De los enlaces oficiales elige el de las bases: PDF con 'bases' > otro PDF > el primero."""
+    lista = (enlaces or "").split()
+    pdfs = [u for u in lista if re.search(r"\.pdf($|\?)", u, re.I)]
+    for grupo in ([u for u in pdfs if re.search(r"(?i)bases|perfil|tdr", u)], pdfs, lista):
+        if grupo:
+            return grupo[0]
+    return None
+
+
+
 PATRONES = {
     "exp_general": r"experiencia\s+(?:laboral\s+)?general[^\n]*",
     "exp_especifica": r"experiencia\s+(?:laboral\s+)?espec[ií]fica[^\n]*",
@@ -192,11 +214,12 @@ def parse_detalle(html: str):
     m = re.search(r"(?i)(t[ií]tulo|bachiller|egresad[oa])[^\n]{10,300}", texto)
     d["formacion"] = m.group(0) if m else None
     d["cursos"] = " | ".join(re.findall(r"(?im)^.*(?:curso|diplomado|especializaci[oó]n|programa de)[^\n]{5,250}$", texto)[:6]) or None
-    d["entidad"] = (soup.find("h1") or soup.find("title")).get_text(" ", strip=True) if (soup.find("h1") or soup.find("title")) else None
+    cab = soup.find("h1") or soup.find("title")
+    d["entidad"] = limpiar_entidad(cab.get_text(" ", strip=True)) if cab else None
     enlaces = [a["href"] for a in soup.find_all("a", href=True)
                if re.search(r"\.gob\.pe|\.pdf$|bases", a["href"], re.I)]
-    d["enlace_bases"] = enlaces[0] if enlaces else None
     d["enlaces_oficiales"] = " ".join(dict.fromkeys(enlaces)) or None
+    d["enlace_bases"] = elegir_bases(d["enlaces_oficiales"])
     if d["exp_publico_anios"] is None and d["exp_especifica_texto"]:
         m = re.search(r"(?i)de\s+los\s+cuales\s+([^\n]{0,60})sector\s+p[uú]blico", texto)
         if m:
@@ -231,6 +254,12 @@ def migrar(db):
             db.execute(f"ALTER TABLE convocatorias ADD COLUMN {nombre} {tipo}")
             cols.add(nombre)
     db.execute("UPDATE convocatorias SET primer_visto = visto_en WHERE primer_visto IS NULL")
+    # Recalcula entidad y enlace_bases con las reglas actuales
+    for id_, ent, enl in db.execute("SELECT id, entidad, enlaces_oficiales FROM convocatorias").fetchall():
+        db.execute("UPDATE convocatorias SET entidad=?, enlace_bases=COALESCE(?, enlace_bases) WHERE id=?",
+                   (limpiar_entidad(ent), elegir_bases(enl), id_))
+    # Limpia filas basura de versiones anteriores (botones de compartir sin id)
+    db.execute("DELETE FROM convocatorias WHERE id IS NULL OR url NOT LIKE '%convocatoriasdetrabajo.com/oportunidad-laboral-%'")
 
 
 def guardar(db, fila):

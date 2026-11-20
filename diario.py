@@ -77,6 +77,7 @@ def analizar_pdfs(db, nuevas, max_pdfs, pausa):
         if not url or url in hechos or not parece_pdf(url) or n >= max_pdfs:
             continue
         n += 1
+        hechos.add(url)  # varias convocatorias pueden compartir las mismas bases
         fila = {"url_bases": url, "convocatoria_id": c["id"],
                 "analizado_en": datetime.now().isoformat(timespec="seconds")}
         time.sleep(max(0, pausa - (time.time() - ult)))
@@ -172,7 +173,8 @@ def main():
         w.writeheader()
         w.writerows(vigentes)
 
-    analizar_pdfs(db, nuevas, a.max_pdfs, a.pausa)
+    # primero las bases de las nuevas; con el cupo que sobre, las vigentes aún sin analizar
+    analizar_pdfs(db, nuevas + [c for c in vigentes if c["nueva_hoy"] == "no"], a.max_pdfs, a.pausa)
     pdfs = {r["url_bases"]: dict(r) for r in db.execute(
         "SELECT * FROM bases_pdf WHERE url_bases IN (%s)" % ",".join("?" * len(nuevas)),
         [c["enlace_bases"] for c in nuevas])} if nuevas else {}
