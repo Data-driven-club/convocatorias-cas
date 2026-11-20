@@ -31,6 +31,8 @@ no hay que tocar nada más.
 | `vacantes` | Número | |
 | `vigente_hasta` | Fecha | Fecha límite de postulación |
 | `nivel_formacion` | Texto | Posgrado / especialidad, Título universitario, Bachiller, Egresado / estudiante, Técnico, Secundaria, Otro (deducido del requisito) |
+| `requisito_card`, `formacion` | Texto | Requisito de formación tal como lo publica el aviso (útil para buscar por carrera) |
+| `cursos`, `exp_especifica_texto` | Texto | Cursos pedidos y detalle de la experiencia específica |
 | `exp_general_anios`, `exp_especifica_anios`, `exp_publico_anios` | Número | Años de experiencia pedidos (vacío = sin dato) |
 | `rango_experiencia` | Texto | Tramos de experiencia general |
 | `fecha_publicacion` | Fecha | Día en que la vimos por primera vez |
@@ -94,7 +96,8 @@ Crea un informe (**Crear › Informe**) y agrega la fuente `convocatorias`.
 - **Filtro de página** (Página › Configuración actual de la página › Filtros): `vigente` igual a `sí`.
 - **Controles** en la parte superior (Agregar un control › Lista desplegable): `departamento`,
   `tipo_entidad`, `nivel_formacion`, `rango_sueldo`, `rango_experiencia`. Un **control deslizante**
-  sobre `sueldo` también ayuda.
+  sobre `sueldo` también ayuda, y un **cuadro de búsqueda** (Control › Cuadro de entrada) sobre
+  `formacion` o `cursos` para buscar por carrera o curso (p. ej. "Contabilidad", "SIAF").
 - **Fila de indicadores** (Cuadro de resultados):
   - `Convocatorias`
   - `vacantes` (Suma)
@@ -133,5 +136,5 @@ necesita acceso a la hoja de cálculo (las credenciales de la fuente son las tuy
   *Actualización de los datos* de la fuente. En el informe, menú *⋮ › Actualizar datos* fuerza la lectura.
 - **Cambié columnas en el CSV**: en Looker, *Recursos › Administrar fuentes de datos › Editar ›
   Actualizar campos*.
-- **El CSV crece mucho**: hoy pesa unos 0,6 MB con 1 500 filas. Si con los meses IMPORTDATA empieza
+- **El CSV crece mucho**: hoy pesa unos 1,2 MB con 1 568 filas. Si con los meses IMPORTDATA empieza
   a fallar por tamaño, se puede limitar `looker.py` a los últimos N días.

@@ -10,7 +10,7 @@ el mismo nombre (URL estable):
   data/looker/resumen_diario.csv  una fila por día de corrida: vigentes y nuevas
 
 No modifica cas.db ni los CSV diarios. Formato pensado para Sheets/Looker:
-UTF-8 sin BOM, punto decimal, fechas AAAA-MM-DD y sin textos largos.
+UTF-8 sin BOM, punto decimal, fechas AAAA-MM-DD y textos en una sola línea.
 
 Uso:  python looker.py [--db cas.db]
 """
@@ -52,6 +52,7 @@ TIPOS_ENTIDAD = [
 
 COLUMNAS = ["id", "entidad", "tipo_entidad", "titulo", "departamento", "region_iso",
             "sueldo", "rango_sueldo", "vacantes", "vigente_hasta", "nivel_formacion",
+            "requisito_card", "formacion", "cursos", "exp_especifica_texto",
             "exp_general_anios", "exp_especifica_anios", "exp_publico_anios", "rango_experiencia",
             "fecha_publicacion", "ultima_vez_vista", "vigente", "nueva", "tiene_bases", "url", "enlace_bases"]
 
@@ -125,6 +126,11 @@ def num(v):
     return str(int(v)) if v.is_integer() else f"{v:g}"
 
 
+def texto(v):
+    """Texto en una sola línea (saltos y espacios repetidos -> un espacio)."""
+    return " ".join((v or "").split())
+
+
 def escribir(ruta, columnas, filas):
     os.makedirs(os.path.dirname(ruta), exist_ok=True)
     with open(ruta, "w", newline="", encoding="utf-8") as f:
@@ -152,6 +158,10 @@ def convocatorias(db):
             "vacantes": num(c["vacantes"]),
             "vigente_hasta": c["vigente_hasta"] or "",
             "nivel_formacion": nivel_formacion(c["formacion"] or c["requisito_card"]),
+            "requisito_card": texto(c["requisito_card"]),
+            "formacion": texto(c["formacion"]),
+            "cursos": texto(c["cursos"]),
+            "exp_especifica_texto": texto(c["exp_especifica_texto"]),
             "exp_general_anios": num(c["exp_general_anios"]),
             "exp_especifica_anios": num(c["exp_especifica_anios"]),
             "exp_publico_anios": num(c["exp_publico_anios"]),
