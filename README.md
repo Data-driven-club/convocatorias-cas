@@ -32,7 +32,7 @@ Para continuar desde la base histórica publicada, descarga antes `cas.db` del
 Release **datos** y déjala en la carpeta del repositorio.
 
 Opciones de `diario.py`: `--departamento`, `--carrera`, `--nivel` (códigos del sitio),
-`--max-paginas` (50), `--pausa` entre peticiones en segundos (3), `--max-pdfs` por día (40),
+`--max-paginas` (200; se detiene solo al final del listado), `--pausa` entre peticiones en segundos (3), `--max-pdfs` por día (40),
 `--sin-scraping` (rehace CSV e informe con la base actual).
 
 Consultas de ejemplo sobre la base:
