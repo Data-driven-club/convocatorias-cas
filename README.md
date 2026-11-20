@@ -46,7 +46,7 @@ sqlite3 cas.db "SELECT titulo, entidad FROM busqueda WHERE busqueda MATCH 'SIAF'
 ## Ejecución automática (GitHub Actions)
 
 El workflow [`.github/workflows/diario.yml`](.github/workflows/diario.yml) corre todos
-los días a las **7:00 a. m. hora de Lima** (12:00 UTC). GitHub puede retrasar unos
+los días a las **7:17 a. m. hora de Lima** (12:17 UTC). GitHub puede retrasar unos
 minutos las tareas programadas.
 
 - **Correrlo ahora:** pestaña **Actions** → *Scraping diario CAS* → **Run workflow**.

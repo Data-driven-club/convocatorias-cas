@@ -2,7 +2,8 @@ name: Scraping diario CAS
 
 on:
   schedule:
-    - cron: "0 12 * * *"   # 12:00 UTC = 7:00 a. m. hora de Lima
+    # Minuto 17 y no 00: GitHub retrasa o descarta más las tareas en punto
+    - cron: "17 12 * * *"  # 12:17 UTC = 7:17 a. m. hora de Lima
   workflow_dispatch:        # botón "Run workflow" en la pestaña Actions
     inputs:
       departamento:
