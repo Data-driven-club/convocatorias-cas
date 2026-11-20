@@ -62,6 +62,9 @@ jobs:
           [ -n "$NIVEL" ] && args+=(--nivel "$NIVEL")
           python diario.py "${args[@]}"
 
+      - name: Fuente de datos para Looker Studio (data/looker/)
+        run: python looker.py
+
       - name: Publicar base histórica en el Release "datos"
         if: always() && hashFiles('cas.db') != ''
         run: |
