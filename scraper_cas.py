@@ -39,7 +39,8 @@ from bs4 import BeautifulSoup
 BASE = "https://www.convocatoriasdetrabajo.com/"
 LISTADO = BASE + "convocatorias-cas-vigentes.php"
 UA = "cas-buscador-personal/0.1 (uso personal, 1 req/3s)"
-AHORA = None  # marca de tiempo común a toda la corrida
+AHORA = None
+RE_FICHA = re.compile(r"^https?://(www\.)?convocatoriasdetrabajo\.com/oportunidad-laboral-[^/]*-\d+\.html$")  # marca de tiempo común a toda la corrida
 
 MESES = {"ene": 1, "feb": 2, "mar": 3, "abr": 4, "may": 5, "jun": 6, "jul": 7,
          "ago": 8, "set": 9, "sep": 9, "oct": 10, "nov": 11, "dic": 12}
@@ -138,7 +139,9 @@ def parse_listado(html: str):
     vistos, avisos = set(), []
     for a in soup.select('a[href*="oportunidad-laboral-"]'):
         url = urljoin(BASE, a["href"].split("?")[0])
-        if url in vistos:
+        # Solo fichas del propio sitio: descarta los botones de compartir
+        # (LinkedIn, WhatsApp, Messenger...) que llevan la URL del aviso dentro.
+        if not RE_FICHA.match(url) or url in vistos:
             continue
         vistos.add(url)
         # Sube hasta el contenedor de la tarjeta (el que incluye "Sueldo")
@@ -231,6 +234,8 @@ def migrar(db):
             db.execute(f"ALTER TABLE convocatorias ADD COLUMN {nombre} {tipo}")
             cols.add(nombre)
     db.execute("UPDATE convocatorias SET primer_visto = visto_en WHERE primer_visto IS NULL")
+    # Limpia filas basura de versiones anteriores (botones de compartir sin id)
+    db.execute("DELETE FROM convocatorias WHERE id IS NULL OR url NOT LIKE '%convocatoriasdetrabajo.com/oportunidad-laboral-%'")
 
 
 def guardar(db, fila):
