@@ -297,14 +297,26 @@ def main():
     ya = {r[0] for r in db.execute("SELECT url FROM convocatorias WHERE texto_detalle IS NOT NULL")}
 
     url, pagina, total = f"{LISTADO}?{urlencode(params)}", 1, 0
-    vistos_corrida = set()
+    vistos_corrida, repetidas = set(), 0
     while url and pagina <= a.max_paginas:
         print(f"[listado] página {pagina}: {url}", file=sys.stderr)
         avisos, sig = parse_listado(cli.get(url))
-        # Fin del listado: página vacía o que solo repite avisos ya vistos en esta corrida
-        if not avisos or all(av["url"] in vistos_corrida for av in avisos):
+        nuevos_pag = [av for av in avisos if av["url"] not in vistos_corrida]
+        print(f"   {len(avisos)} avisos, {len(nuevos_pag)} no vistos antes en esta corrida", file=sys.stderr)
+        if not avisos:
             break
+        # Fin del listado: el sitio repite la última página. Una sola página repetida
+        # puede ser un tropiezo del sitio, así que se corta tras 3 seguidas sin nada nuevo.
+        if not nuevos_pag:
+            repetidas += 1
+            if repetidas >= 3:
+                break
+            pagina += 1
+            url = f"{LISTADO}?{urlencode({**params, 'page': pagina})}"
+            continue
+        repetidas = 0
         vistos_corrida.update(av["url"] for av in avisos)
+        avisos = nuevos_pag
         for av in avisos:
             av["filtros"] = urlencode(params)
             av["visto_en"] = AHORA
