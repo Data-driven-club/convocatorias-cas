@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Convocatorias CAS</title>
+<meta name="description" content="Convocatorias CAS vigentes en Perú: filtros por región, sueldo, formación y entidad. Se actualiza cada mañana.">
+<link rel="stylesheet" href="estilos.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='8' width='3' height='7' rx='1' fill='%232a78d6'/%3E%3Crect x='6.5' y='4' width='3' height='11' rx='1' fill='%232a78d6'/%3E%3Crect x='12' y='1' width='3' height='14' rx='1' fill='%232a78d6'/%3E%3C/svg%3E">
+</head>
+<body>
+<header class="cabecera">
+  <div class="envoltura cabecera-fila">
+    <div>
+      <h1>Convocatorias CAS</h1>
+      <p class="sub" id="actualizado">Cargando datos…</p>
+    </div>
+    <nav class="cabecera-enlaces">
+      <button type="button" id="tema" class="boton-fantasma" aria-label="Cambiar tema claro u oscuro">◐ Tema</button>
+      <a href="https://github.com/Data-driven-club/convocatorias-cas" class="boton-fantasma">Repositorio</a>
+    </nav>
+  </div>
+</header>
+
+<main class="envoltura">
+  <section class="filtros" aria-label="Filtros">
+    <label class="campo campo-busqueda">
+      <span>Buscar en puesto, entidad, formación y cursos</span>
+      <input type="search" id="f-texto" placeholder="Ej.: contador, SIAF, ingeniero civil" autocomplete="off">
+    </label>
+    <label class="campo"><span>Región</span><select id="f-departamento"></select></label>
+    <label class="campo"><span>Tipo de entidad</span><select id="f-tipo_entidad"></select></label>
+    <label class="campo"><span>Formación</span><select id="f-nivel_formacion"></select></label>
+    <label class="campo"><span>Sueldo</span><select id="f-rango_sueldo"></select></label>
+    <label class="campo"><span>Experiencia</span><select id="f-rango_experiencia"></select></label>
+    <label class="campo"><span>Entidad</span>
+      <input type="text" id="f-entidad" list="lista-entidades" placeholder="Todas" autocomplete="off">
+      <datalist id="lista-entidades"></datalist>
+    </label>
+    <div class="campo campo-casillas">
+      <label class="casilla"><input type="checkbox" id="f-vigente" checked> Solo vigentes</label>
+      <label class="casilla"><input type="checkbox" id="f-nueva"> Solo nuevas de hoy</label>
+    </div>
+    <div class="campo campo-acciones">
+      <button type="button" id="limpiar" class="boton">Limpiar filtros</button>
+    </div>
+  </section>
+
+  <p class="resumen-filtros" id="resumen-filtros" aria-live="polite"></p>
+
+  <section class="kpis" aria-label="Indicadores">
+    <div class="kpi"><span class="kpi-etiqueta">Convocatorias</span><span class="kpi-valor" id="k-total">–</span><span class="kpi-nota" id="k-total-nota"></span></div>
+    <div class="kpi"><span class="kpi-etiqueta">Nuevas hoy</span><span class="kpi-valor" id="k-nuevas">–</span><span class="kpi-nota" id="k-nuevas-nota"></span></div>
+    <div class="kpi"><span class="kpi-etiqueta">Vacantes</span><span class="kpi-valor" id="k-vacantes">–</span><span class="kpi-nota">suma de plazas</span></div>
+    <div class="kpi"><span class="kpi-etiqueta">Sueldo mediano</span><span class="kpi-valor" id="k-sueldo">–</span><span class="kpi-nota" id="k-sueldo-nota"></span></div>
+  </section>
+
+  <section class="graficos">
+    <article class="tarjeta tarjeta-ancha">
+      <h2>Convocatorias nuevas por día</h2>
+      <p class="sub" id="g-tendencia-sub"></p>
+      <div class="grafico" id="g-tendencia"></div>
+    </article>
+    <article class="tarjeta">
+      <h2>Por región</h2>
+      <p class="sub">Clic en una barra para filtrar</p>
+      <div class="grafico" id="g-departamento"></div>
+    </article>
+    <div class="columna">
+      <article class="tarjeta">
+        <h2>Por rango de sueldo (S/)</h2>
+        <p class="sub">Clic en una barra para filtrar</p>
+        <div class="grafico" id="g-rango_sueldo"></div>
+      </article>
+      <article class="tarjeta">
+        <h2>Por formación requerida</h2>
+        <p class="sub">Clic en una barra para filtrar</p>
+        <div class="grafico" id="g-nivel_formacion"></div>
+      </article>
+    </div>
+    <article class="tarjeta">
+      <h2>Por tipo de entidad</h2>
+      <p class="sub">Clic en una barra para filtrar</p>
+      <div class="grafico" id="g-tipo_entidad"></div>
+    </article>
+    <article class="tarjeta">
+      <h2>Por experiencia general requerida</h2>
+      <p class="sub">Clic en una barra para filtrar</p>
+      <div class="grafico" id="g-rango_experiencia"></div>
+    </article>
+    <article class="tarjeta tarjeta-ancha">
+      <h2>Entidades con más convocatorias</h2>
+      <p class="sub">Las 12 primeras con los filtros actuales. Clic para filtrar</p>
+      <div class="grafico" id="g-entidad"></div>
+    </article>
+  </section>
+
+  <section class="tarjeta tabla-tarjeta" aria-label="Detalle de convocatorias">
+    <div class="tabla-cabecera">
+      <div>
+        <h2>Detalle</h2>
+        <p class="sub" id="t-sub"></p>
+      </div>
+      <div class="tabla-acciones">
+        <label class="campo campo-linea"><span>Ordenar por</span>
+          <select id="orden">
+            <option value="fecha_publicacion:desc">Más recientes</option>
+            <option value="sueldo:desc">Mayor sueldo</option>
+            <option value="sueldo:asc">Menor sueldo</option>
+            <option value="vigente_hasta:asc">Vencen antes</option>
+            <option value="vacantes:desc">Más vacantes</option>
+          </select>
+        </label>
+        <button type="button" id="descargar" class="boton">Descargar CSV</button>
+      </div>
+    </div>
+    <div class="tabla-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Puesto y entidad</th>
+            <th scope="col">Región</th>
+            <th scope="col" class="num">Sueldo (S/)</th>
+            <th scope="col" class="num">Vacantes</th>
+            <th scope="col">Formación</th>
+            <th scope="col" class="num">Exp. (años)</th>
+            <th scope="col">Vence</th>
+            <th scope="col">Enlaces</th>
+          </tr>
+        </thead>
+        <tbody id="t-cuerpo"></tbody>
+      </table>
+    </div>
+    <div class="paginacion">
+      <button type="button" class="boton" id="t-anterior">‹ Anterior</button>
+      <span id="t-pagina"></span>
+      <button type="button" class="boton" id="t-siguiente">Siguiente ›</button>
+    </div>
+  </section>
+
+  <footer class="pie">
+    <p>Datos recolectados cada mañana (7:17 a. m., hora de Lima) de
+      <a href="https://www.convocatoriasdetrabajo.com/convocatorias-cas-vigentes.php">convocatoriasdetrabajo.com</a>.
+      La clasificación de entidad, formación y experiencia es automática: revisa siempre las bases oficiales antes de postular.</p>
+  </footer>
+</main>
+
+<div class="tooltip" id="tooltip" role="tooltip" hidden></div>
+<script src="app.js"></script>
+</body>
+</html>
