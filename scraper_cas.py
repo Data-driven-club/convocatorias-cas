@@ -56,17 +56,37 @@ def sin_tildes(s: str) -> str:
 
 
 def a_anios(fragmento: str):
-    """'cuatro (04) años' -> 4 ; '2 año(s)' -> 2 ; '6 meses' -> 0.5 ; None si no hay."""
-    t = sin_tildes(fragmento)
-    m = re.search(r"(\d+(?:[.,]\d+)?)\s*\)?\s*(anos?|ano\(s\)|meses?)", t)
+    """'cuatro (04) años' -> 4 ; '2 año(s)' -> 2 ; '6 meses' -> 0.5 ; None si no hay.
+
+    Toma la primera mención del fragmento, sea en número o en palabras."""
+    ms = menciones_anios(sin_tildes(fragmento))
+    return ms[0][1] if ms else None
+
+
+def menciones_anios(t: str):
+    """[(posición, años)] de cada mención de tiempo en `t` (ya sin tildes y en minúsculas)."""
+    pal = "|".join(NUM_PALABRAS)
+    out = []
+    for m in re.finditer(r"(?:\b(" + pal + r")\b\s*(?:\(\s*(\d+)\s*\)\s*)?|(\d+(?:[.,]\d+)?)\s*\)?\s*)"
+                         r"(anos?|ano\(s\)|meses?)\b", t):
+        palabra, cifra_par, cifra = m.groups()[:3]
+        # "un (04) años": manda la cifra entre paréntesis
+        n = float((cifra_par or cifra or "").replace(",", ".") or NUM_PALABRAS[palabra])
+        out.append((m.start(), round(n / 12, 2) if m.group(4).startswith("mes") else n))
+    return out
+
+
+def anios_publico(t: str):
+    """Años exigidos en el sector público: la mención más cercana antes de "sector público"
+    (o la primera después, si la frase es "...en el sector público: 1 año")."""
+    t = sin_tildes(t)
+    m = re.search(r"sector\s+publico(?![^.\n]{0,15}privad)", t)
     if not m:
-        m2 = re.search(r"\b(" + "|".join(NUM_PALABRAS) + r")\b\s*(?:\(\d+\)\s*)?(anos?|ano\(s\)|meses?)", t)
-        if not m2:
-            return None
-        n, unidad = float(NUM_PALABRAS[m2.group(1)]), m2.group(2)
-    else:
-        n, unidad = float(m.group(1).replace(",", ".")), m.group(2)
-    return round(n / 12, 2) if unidad.startswith("mes") else n
+        return None
+    ms = menciones_anios(t)
+    antes = [n for pos, n in ms if pos < m.start()]
+    despues = [n for pos, n in ms if pos > m.start()]
+    return antes[-1] if antes else (despues[0] if despues else None)
 
 
 def fecha_iso(txt: str):
@@ -190,10 +210,88 @@ def elegir_bases(enlaces):
 
 
 PATRONES = {
-    "exp_general": r"experiencia\s+(?:laboral\s+)?general[^\n]*",
-    "exp_especifica": r"experiencia\s+(?:laboral\s+)?espec[ií]fica[^\n]*",
-    "exp_publico": r"experiencia\s+en\s+el\s+sector\s+p[uú]blico[^\n]*|de\s+los\s+cuales[^\n]*sector\s+p[uú]blico[^\n]*",
+    "exp_general": r"experiencia\s+(?:laboral\s+|profesional\s+)?general[^\n]*",
+    "exp_especifica": r"experiencia\s+(?:laboral\s+|profesional\s+)?espec[ií]fica[^\n]*",
+    "exp_publico": r"experiencia\s+en\s+el\s+sector\s+p[uú]blico(?![^.\n]{0,15}privad)[^\n]*|"
+                   r"de\s+los\s+cuales[^\n]*sector\s+p[uú]blico(?![^.\n]{0,15}privad)[^\n]*",
 }
+
+# Secciones de la ficha que vienen después del bloque "Experiencia:"
+RE_FIN_BLOQUE = re.compile(r"(?i)^(competencias|cursos|conocimientos?|nota|formaci[oó]n|habilidades|"
+                           r"requisitos|otros|descargue|funciones|n[uú]mero de vacantes|publicidad|"
+                           r"lugar|remuneraci[oó]n|duraci[oó]n|condiciones|caracter[ií]sticas)\b")
+
+
+def items_bloque_experiencia(texto):
+    """Renglones del bloque "Experiencia:" de la ficha, uniendo los que siguen una frase.
+
+    El sitio suele poner la experiencia como texto libre bajo la etiqueta
+    "Experiencia:" (p. ej. "Cuatro (04) años de experiencia laboral...") en vez
+    de "Experiencia general: ...". Devuelve [] si la ficha no tiene ese bloque.
+    """
+    lineas = texto.split("\n")
+    ini = next((i for i, l in enumerate(lineas)
+                if re.match(r"(?i)^experiencia\s*(laboral\s*)?:?\s*$", l.strip())), None)
+    if ini is None:
+        return []
+    items = []
+    for l in lineas[ini + 1: ini + 13]:
+        l = l.strip()
+        if RE_FIN_BLOQUE.match(l):
+            break
+        if re.match(r"(?i)^experiencia\s+(laboral\s+)?(general|espec[ií]fica)\s*:?\s*$", l):
+            items.append(l)          # subtítulo: el dato viene en la línea siguiente
+        elif items and (l[:1].islower() or items[-1].endswith(":") or not re.search(r"[.;)]$", items[-1])) \
+                and not re.match(r"(?i)^(general|espec[ií]fica|experiencia|no menor|m[ií]nim|[a-z]\.|\d+\.)", l):
+            items[-1] += " " + l     # continuación de la frase anterior
+        else:
+            items.append(l)
+    # Un subtítulo suelto se une con su contenido
+    unidos = []
+    for it in items:
+        if unidos and unidos[-1].endswith(":"):
+            unidos[-1] += " " + it
+        else:
+            unidos.append(it)
+    return unidos
+
+
+def extraer_experiencia(texto):
+    """Años y texto de experiencia general, específica y en el sector público."""
+    d = {}
+    for k, pat in PATRONES.items():
+        m = re.search(pat, texto, flags=re.I)
+        # a veces el número viene en la línea siguiente a la etiqueta
+        frag = texto[m.start(): m.start() + 300] if m else None
+        d[k + "_texto"] = frag.split("\n")[0] if frag else None
+        n = None
+        if frag and k == "exp_publico":
+            n = anios_publico(m.group(0))
+        elif frag:
+            # el número puede ir antes de la etiqueta ("Seis (06) años de experiencia general")
+            n = a_anios(texto[texto.rfind("\n", 0, m.start()) + 1: m.end()])
+        d[k + "_anios"] = n if n is not None else (a_anios(frag) if frag else None)
+    if d["exp_publico_anios"] is None and d["exp_especifica_texto"]:
+        m = re.search(r"(?i)de\s+los\s+cuales\s+([^\n]{0,60})sector\s+p[uú]blico", texto)
+        if m:
+            d["exp_publico_anios"] = a_anios(m.group(1))
+
+    # Respaldo: bloque "Experiencia:" en texto libre. Solo completa lo que falta.
+    con_anios = [(it, a_anios(it)) for it in items_bloque_experiencia(texto)]
+    con_anios = [(it, n) for it, n in con_anios if n is not None]
+    for it, n in con_anios:
+        cab = sin_tildes(it[:60])
+        if re.search(r"especific", cab):
+            k = "exp_especifica"
+        elif re.search(r"general", cab) or d["exp_general_anios"] is None:
+            k = "exp_general"
+        else:
+            k = "exp_especifica"
+        if d[k + "_anios"] is None:
+            d[k + "_anios"], d[k + "_texto"] = n, it
+        if d["exp_publico_anios"] is None and anios_publico(it) is not None:
+            d["exp_publico_anios"], d["exp_publico_texto"] = anios_publico(it), it
+    return d
 
 
 def parse_detalle(html: str):
@@ -201,16 +299,7 @@ def parse_detalle(html: str):
     for t in soup(["script", "style", "nav", "footer", "header"]):
         t.decompose()
     texto = "\n".join(l.strip() for l in soup.get_text("\n").split("\n") if l.strip())
-    d = {"texto_detalle": texto}
-    for k, pat in PATRONES.items():
-        m = re.search(pat, texto, flags=re.I)
-        # a veces el número viene en la línea siguiente a la etiqueta
-        frag = None
-        if m:
-            ini = m.start()
-            frag = texto[ini: ini + 300]
-        d[k + "_texto"] = frag.split("\n")[0] if frag else None
-        d[k + "_anios"] = a_anios(frag) if frag else None
+    d = {"texto_detalle": texto, **extraer_experiencia(texto)}
     m = re.search(r"(?i)(t[ií]tulo|bachiller|egresad[oa])[^\n]{10,300}", texto)
     d["formacion"] = m.group(0) if m else None
     d["cursos"] = " | ".join(re.findall(r"(?im)^.*(?:curso|diplomado|especializaci[oó]n|programa de)[^\n]{5,250}$", texto)[:6]) or None
@@ -220,10 +309,6 @@ def parse_detalle(html: str):
                if re.search(r"\.gob\.pe|\.pdf$|bases", a["href"], re.I)]
     d["enlaces_oficiales"] = " ".join(dict.fromkeys(enlaces)) or None
     d["enlace_bases"] = elegir_bases(d["enlaces_oficiales"])
-    if d["exp_publico_anios"] is None and d["exp_especifica_texto"]:
-        m = re.search(r"(?i)de\s+los\s+cuales\s+([^\n]{0,60})sector\s+p[uú]blico", texto)
-        if m:
-            d["exp_publico_anios"] = a_anios(m.group(1))
     return d
 
 
@@ -258,6 +343,12 @@ def migrar(db):
     for id_, ent, enl in db.execute("SELECT id, entidad, enlaces_oficiales FROM convocatorias").fetchall():
         db.execute("UPDATE convocatorias SET entidad=?, enlace_bases=COALESCE(?, enlace_bases) WHERE id=?",
                    (limpiar_entidad(ent), elegir_bases(enl), id_))
+    # Recalcula la experiencia desde el texto guardado de cada ficha (reglas actuales)
+    for id_, texto in db.execute("SELECT id, texto_detalle FROM convocatorias "
+                                 "WHERE texto_detalle IS NOT NULL").fetchall():
+        e = extraer_experiencia(texto)
+        db.execute(f"UPDATE convocatorias SET {', '.join(k + '=?' for k in e)} WHERE id=?",
+                   [*e.values(), id_])
     # Limpia filas basura de versiones anteriores (botones de compartir sin id)
     db.execute("DELETE FROM convocatorias WHERE id IS NULL OR url NOT LIKE '%convocatoriasdetrabajo.com/oportunidad-laboral-%'")
 

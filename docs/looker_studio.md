@@ -34,7 +34,7 @@ no hay que tocar nada más.
 | `requisito_card`, `formacion` | Texto | Requisito de formación tal como lo publica el aviso (útil para buscar por carrera) |
 | `cursos`, `exp_especifica_texto` | Texto | Cursos pedidos y detalle de la experiencia específica |
 | `exp_general_anios`, `exp_especifica_anios`, `exp_publico_anios` | Número | Años de experiencia pedidos (vacío = sin dato) |
-| `rango_experiencia` | Texto | Tramos de experiencia general |
+| `rango_experiencia` | Texto | Tramos de experiencia general (si la ficha solo pide experiencia específica, se usa esa) |
 | `fecha_publicacion` | Fecha | Día en que la vimos por primera vez |
 | `ultima_vez_vista` | Fecha | Última corrida en que seguía publicada |
 | `vigente` | Texto `sí`/`no` | Sigue publicada en la última corrida y su plazo no venció |
