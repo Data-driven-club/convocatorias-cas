@@ -165,7 +165,9 @@ def convocatorias(db):
             "exp_general_anios": num(c["exp_general_anios"]),
             "exp_especifica_anios": num(c["exp_especifica_anios"]),
             "exp_publico_anios": num(c["exp_publico_anios"]),
-            "rango_experiencia": rango_experiencia(c["exp_general_anios"]),
+            # si solo piden experiencia específica, esa es también el mínimo de experiencia general
+            "rango_experiencia": rango_experiencia(c["exp_general_anios"] if c["exp_general_anios"] is not None
+                                                   else c["exp_especifica_anios"]),
             "fecha_publicacion": (c["primer_visto"] or "")[:10],
             "ultima_vez_vista": visto,
             # sigue publicada en la última corrida y su plazo no venció
