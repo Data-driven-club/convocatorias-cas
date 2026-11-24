@@ -1,0 +1,51 @@
+name: Publicar dashboard (GitHub Pages)
+
+# Publica dashboard/ junto con los CSV de data/looker/ en GitHub Pages.
+# Se dispara al terminar la corrida diaria (sus commits los hace el token de
+# GitHub, que no dispara eventos "push"), al cambiar el dashboard y a mano.
+on:
+  workflow_run:
+    workflows: ["Scraping diario CAS"]
+    types: [completed]
+  push:
+    branches: [main]
+    paths:
+      - "dashboard/**"
+      - "data/looker/**"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  publicar:
+    # Si la corrida diaria falló, se mantiene publicada la versión anterior.
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.despliegue.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main   # la versión con los datos recién guardados por la corrida diaria
+
+      - name: Armar el sitio
+        run: |
+          mkdir -p _site/data
+          cp -r dashboard/. _site/
+          cp data/looker/convocatorias.csv data/looker/resumen_diario.csv _site/data/
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: despliegue
+        uses: actions/deploy-pages@v4

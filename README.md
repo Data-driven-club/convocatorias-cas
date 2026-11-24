@@ -4,6 +4,9 @@ Recolector diario de las convocatorias CAS vigentes publicadas en
 [convocatoriasdetrabajo.com](https://www.convocatoriasdetrabajo.com/convocatorias-cas-vigentes.php),
 con análisis de las bases en PDF.
 
+**Dashboard:** https://data-driven-club.github.io/convocatorias-cas/ (se actualiza solo
+después de cada corrida diaria; ver [Dashboard web](#dashboard-web)).
+
 ## Qué produce y dónde queda
 
 | Salida | Dónde | Para qué |
@@ -11,6 +14,7 @@ con análisis de las bases en PDF.
 | `data/AAAA-MM-DD.csv` | En el repositorio (commit diario) | Todas las convocatorias vistas ese día. Columna `nueva_hoy` marca las nuevas. Se abre en Excel. |
 | `informes/AAAA-MM-DD.md` | En el repositorio (commit diario) | Lista de convocatorias nuevas y resumen de cada PDF de bases. GitHub lo muestra formateado. |
 | `data/looker/convocatorias.csv` y `data/looker/resumen_diario.csv` | En el repositorio (se sobrescriben cada día, URL fija) | Fuente para el dashboard de Looker Studio. Ver [docs/looker_studio.md](docs/looker_studio.md). |
+| Dashboard web | [GitHub Pages](https://data-driven-club.github.io/convocatorias-cas/) | Filtros por región, sueldo, formación, experiencia y entidad; búsqueda en formación y cursos; gráficos y detalle con enlace a cada convocatoria. |
 | `cas.db` (SQLite histórico) | [Release **datos**](../../releases/tag/datos) | Base completa con el texto de cada ficha y la tabla `bases_pdf`. Se reemplaza cada día. |
 
 Los PDF de bases **no se guardan**: se descargan, se analizan en memoria y solo se
@@ -62,11 +66,26 @@ minutos las tareas programadas.
 La primera corrida descarga el detalle de todas las convocatorias y puede tardar más
 de una hora; las siguientes solo bajan las nuevas.
 
+## Dashboard web
+
+La carpeta [`dashboard/`](dashboard/) es una página estática (HTML, CSS y JavaScript,
+sin dependencias) que lee `data/looker/convocatorias.csv` y `data/looker/resumen_diario.csv`.
+El workflow [`.github/workflows/pages.yml`](.github/workflows/pages.yml) la publica en
+GitHub Pages cada vez que termina bien la corrida diaria y cada vez que cambia el dashboard.
+
+- **Activarlo (una sola vez):** Settings → Pages → *Build and deployment* → *Source*:
+  **GitHub Actions**. Luego Actions → *Publicar dashboard (GitHub Pages)* → **Run workflow**.
+- **Compartir una búsqueda:** los filtros quedan en la dirección de la página
+  (por ejemplo `…/#departamento=Lima&texto=contador`), así que basta copiar el enlace.
+- **Probarlo en tu computadora:** desde la carpeta del repositorio,
+  `python -m http.server` y abre http://localhost:8000/dashboard/.
+
 ## Estructura
 
 ```
 diario.py                     corrida diaria: scraper + CSV + análisis de PDF + informe
-looker.py                     CSV limpios para Looker Studio (data/looker/)
+looker.py                     CSV limpios para Looker Studio y el dashboard (data/looker/)
+dashboard/                    dashboard web estático (GitHub Pages)
 scraper_cas.py                scraper del listado y las fichas -> SQLite (incremental)
 organismos/
   catalogo_organismos.csv     catálogo de organismos y sus fuentes oficiales
