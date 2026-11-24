@@ -102,6 +102,16 @@ def analizar_pdfs(db, nuevas, max_pdfs, pausa):
         db.commit()
 
 
+def suma_vacantes(convs):
+    tot = 0
+    for c in convs:
+        try:
+            tot += int(float(c.get("vacantes") or 0))
+        except (TypeError, ValueError):
+            pass
+    return tot
+
+
 def fmt(v, suf=""):
     if v is None or v == "":
         return "—"
@@ -112,7 +122,8 @@ def fmt(v, suf=""):
 
 def escribir_informe(ruta, hoy, vigentes, nuevas, pdfs):
     L = [f"# Convocatorias CAS — {hoy}", "",
-         f"- Convocatorias vistas hoy: **{len(vigentes)}**",
+         f"- Convocatorias vistas hoy: **{len(vigentes)}**"
+         f" ({suma_vacantes(vigentes)} vacantes)",
          f"- Nuevas desde la última corrida: **{len(nuevas)}**",
          f"- Bases PDF analizadas: **{sum(1 for p in pdfs.values() if p['estado'] == 'ok')}**"
          f" de {len(pdfs)} intentadas", ""]
@@ -186,7 +197,7 @@ def main():
 
     ruta_md = os.path.join(AQUI, "informes", f"{hoy}.md")
     escribir_informe(ruta_md, hoy, vigentes, nuevas, pdfs)
-    print(f"Listo: {len(vigentes)} vistas, {len(nuevas)} nuevas -> {ruta_csv}, {ruta_md}", file=sys.stderr)
+    print(f"Listo: {len(vigentes)} vistas ({suma_vacantes(vigentes)} vacantes), {len(nuevas)} nuevas -> {ruta_csv}, {ruta_md}", file=sys.stderr)
 
 
 if __name__ == "__main__":
