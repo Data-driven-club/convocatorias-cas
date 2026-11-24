@@ -153,6 +153,10 @@ class Cliente:
 
 
 # ---------------------------------------------------------------- listado
+# Total que muestra el sitio, p. ej. "Hay 1914 vacante(s) de empleo": cuenta vacantes, no avisos.
+RE_TOTAL = re.compile(r"Hay\s+[\d.,]+\s+vacante\(?s?\)?(\s+de\s+empleo(\s+del\s+sector\s+p[uú]blico)?)?", re.I)
+
+
 def parse_listado(html: str):
     """Extrae las tarjetas: cada enlace a oportunidad-laboral-*.html es un aviso."""
     soup = BeautifulSoup(html, "html.parser")
@@ -391,7 +395,11 @@ def main():
     vistos_corrida, repetidas = set(), 0
     while url and pagina <= a.max_paginas:
         print(f"[listado] página {pagina}: {url}", file=sys.stderr)
-        avisos, sig = parse_listado(cli.get(url))
+        html = cli.get(url)
+        if pagina == 1:
+            m = RE_TOTAL.search(BeautifulSoup(html, "html.parser").get_text(" "))
+            print(f"[listado] el sitio anuncia: {m.group(0) if m else 'sin total visible'}", file=sys.stderr)
+        avisos, sig = parse_listado(html)
         nuevos_pag = [av for av in avisos if av["url"] not in vistos_corrida]
         print(f"   {len(avisos)} avisos, {len(nuevos_pag)} no vistos antes en esta corrida", file=sys.stderr)
         if not avisos:
