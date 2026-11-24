@@ -25,13 +25,14 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  publicar:
+  # Armar y subir el sitio en un job y desplegarlo en otro (el esquema oficial de
+  # GitHub). En un solo job, deploy-pages a veces busca el paquete antes de que
+  # GitHub lo registre ("No artifacts named github-pages") y al re-ejecutar
+  # encuentra dos ("Multiple artifacts").
+  armar:
     # Si la corrida diaria falló, se mantiene publicada la versión anterior.
     if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.despliegue.outputs.page_url }}
     steps:
       - uses: actions/checkout@v5
         with:
@@ -47,5 +48,13 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
+
+  publicar:
+    needs: armar
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.despliegue.outputs.page_url }}
+    steps:
       - id: despliegue
         uses: actions/deploy-pages@v4
